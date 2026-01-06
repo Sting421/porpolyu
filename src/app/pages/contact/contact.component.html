@@ -1,0 +1,42 @@
+<header>
+    <h2 class="h2 article-title">Contact</h2>
+</header>
+
+<section class="mapbox">
+    <figure>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62720.75143166526!2d123.84357627421874!3d9.672948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa4db4b0caac5d%3A0x267a3a6d70572321!2sTagbilaran%20City%2C%20Bohol!5e0!3m2!1sen!2sph!4v1707766306588!5m2!1sen!2sph"
+            width="400" height="300" loading="lazy"></iframe>
+    </figure>
+</section>
+
+<section class="contact-form">
+    <h3 class="h3 form-title">Contact Form</h3>
+
+    <!-- Success Message -->
+    <div *ngIf="submitSuccess" class="form-message success-message">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <span>Message sent successfully! I'll get back to you soon.</span>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="submitError" class="form-message error-message">
+        <ion-icon name="alert-circle"></ion-icon>
+        <span>{{ submitError }}</span>
+    </div>
+
+    <form class="form" (submit)="onFormSubmit($event)">
+        <div class="input-wrapper">
+            <input type="text" name="fullname" class="form-input" placeholder="Full name" required
+                [(ngModel)]="contactForm.fullname" [disabled]="isSubmitting">
+            <input type="email" name="email" class="form-input" placeholder="Email address" required
+                [(ngModel)]="contactForm.email" [disabled]="isSubmitting">
+        </div>
+        <textarea name="message" class="form-input" placeholder="Your Message" required
+            [(ngModel)]="contactForm.message" [disabled]="isSubmitting"></textarea>
+        <button class="form-btn" type="submit" [disabled]="!isFormValid() || isSubmitting">
+            <ion-icon [name]="isSubmitting ? 'hourglass' : 'paper-plane'"></ion-icon>
+            <span>{{ isSubmitting ? 'Sending...' : 'Send Message' }}</span>
+        </button>
+    </form>
+</section>

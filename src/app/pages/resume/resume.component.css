@@ -1,0 +1,89 @@
+/* Resume page component styles - inherits from global styles */
+
+/* CV Actions Section */
+.cv-actions {
+    margin-bottom: 30px;
+}
+
+.cv-buttons-wrapper {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cv-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cv-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.cv-btn ion-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.cv-btn span {
+    display: inline;
+}
+
+/* View CV Button */
+.view-cv-btn {
+    background: linear-gradient(135deg, hsla(180, 100%, 50%, 0.15) 0%, hsla(180, 100%, 50%, 0.08) 100%);
+    border-color: hsla(180, 100%, 50%, 0.4);
+    color: hsl(180, 100%, 50%);
+    box-shadow: 0 4px 15px hsla(180, 100%, 50%, 0.15);
+}
+
+.view-cv-btn:hover {
+    background: linear-gradient(135deg, hsla(180, 100%, 50%, 0.25) 0%, hsla(180, 100%, 50%, 0.15) 100%);
+    border-color: hsl(180, 100%, 50%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px hsla(180, 100%, 50%, 0.25);
+}
+
+.view-cv-btn:hover ion-icon {
+    transform: scale(1.1);
+}
+
+/* School Link */
+.school-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.school-link:hover {
+    color: hsl(180, 100%, 50%);
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+    .cv-buttons-wrapper {
+        flex-direction: column;
+    }
+
+    .cv-btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}

@@ -1,0 +1,64 @@
+<header>
+    <h2 class="h2 article-title">Projects</h2>
+</header>
+
+<section class="projects">
+    <!-- Desktop Filter -->
+    <ul class="filter-list">
+        @for (category of categories; track category) {
+        <li class="filter-item">
+            <button [class.active]="activeFilter === category.toLowerCase()" (click)="setFilter(category)">{{ category
+                }}</button>
+        </li>
+        }
+    </ul>
+
+    <!-- Mobile Filter -->
+    <div class="filter-select-box">
+        <button class="filter-select" [class.active]="selectActive" (click)="toggleSelect()">
+            <div class="select-value">{{ activeFilter === 'all' ? 'Select category' : activeFilter }}</div>
+            <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+            </div>
+        </button>
+        <ul class="select-list">
+            @for (category of categories; track category) {
+            <li class="select-item">
+                <button (click)="setFilter(category)">{{ category }}</button>
+            </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Project List -->
+    <ul class="project-list">
+        @for (project of projects; track project.title) {
+        <li class="project-item" [class.active]="isProjectVisible(project)"
+            [class.expanded]="isExpanded(project.title)">
+            <a (click)="openInIframe($event, project.link)" style="cursor: pointer;">
+                <figure class="project-img">
+                    <div class="project-item-icon-box">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                    <img [src]="project.image" [alt]="project.title" loading="lazy">
+                </figure>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-category">{{ project.category | titlecase }}</p>
+            </a>
+
+            <!-- Read More Button -->
+            <button class="read-more-btn" (click)="toggleReadMore($event, project.title)">
+                <span>{{ isExpanded(project.title) ? 'Show Less' : 'Read More' }}</span>
+                <ion-icon [name]="isExpanded(project.title) ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+            </button>
+
+            <!-- Description Section -->
+            @if (isExpanded(project.title) && project.description) {
+            <div class="project-description">
+                <p>{{ project.description }}</p>
+            </div>
+            }
+        </li>
+        }
+    </ul>
+</section>

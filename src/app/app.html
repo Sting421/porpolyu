@@ -1,0 +1,45 @@
+<!-- Main Container -->
+<main>
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.active]="sidebarActive">
+    <app-sidebar [isActive]="sidebarActive" (toggleSidebar)="toggleSidebar()">
+    </app-sidebar>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <app-navbar [activePage]="activePage" (pageChange)="setActivePage($event)">
+      </app-navbar>
+    </nav>
+
+    <!-- About Page -->
+    <article class="about" [class.active]="activePage === 'about'">
+      <app-about [isActive]="activePage === 'about'"></app-about>
+    </article>
+
+    <!-- Resume Page -->
+    <article class="resume" [class.active]="activePage === 'resume'">
+      <app-resume [isActive]="activePage === 'resume'"></app-resume>
+    </article>
+
+    <!-- Projects Page -->
+    <article class="projects" [class.active]="activePage === 'projects'">
+      <app-projects [isActive]="activePage === 'projects'"></app-projects>
+    </article>
+
+    <!-- Certificates Page -->
+    <article class="certificates" [class.active]="activePage === 'achievements'">
+      <app-certificates [isActive]="activePage === 'achievements'"></app-certificates>
+    </article>
+
+    <!-- Contact Page -->
+    <article class="contact" [class.active]="activePage === 'contact'">
+      <app-contact [isActive]="activePage === 'contact'"></app-contact>
+    </article>
+  </div>
+</main>
+
+<!-- Global Iframe Viewer -->
+<app-iframe-viewer></app-iframe-viewer>

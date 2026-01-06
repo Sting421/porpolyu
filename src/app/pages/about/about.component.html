@@ -1,0 +1,72 @@
+<header>
+    <h2 class="h2 article-title">About me</h2>
+</header>
+
+<section class="about-text">
+    <p>
+        Hi, I'm Aldrin John, a web developer with a strong interest. Making games and websites is my
+        area of expertise. Discover more about me by looking through my work!
+    </p>
+    <p>
+        In addition to my other skills, I specialize in photo and video editing. My expertise includes enhancing images
+        by adjusting colors, lighting, and composition to bring out their best qualities.
+        I can perform tasks such as background removal, retouching, adding creative effects, and creating
+        professional-quality designs for various purposes.
+    </p>
+    <p>
+        On the video editing side, I am proficient in editing footage to create engaging and polished content. This
+        includes trimming and sequencing clips, adding transitions, integrating background music or voiceovers, color
+        grading, applying special effects, and rendering the final product in high-quality formats.
+        My work caters to a wide range of needs, such as social media content, promotional videos, personal projects, or
+        professional presentations.
+    </p>
+    <p>
+        By blending technical precision and artistic creativity, I ensure that every project meets high standards of
+        quality and aligns with the desired vision.
+        Let me know how I can help with your photo or video editing needs!
+    </p>
+</section>
+
+<!-- Services -->
+<section class="service">
+    <h3 class="h3 service-title">What i'm doing</h3>
+    <ul class="service-list">
+        @for (service of services; track service.title) {
+        <li class="service-item">
+            <div class="service-icon-box">
+                <img [src]="service.icon" [alt]="service.title + ' icon'" width="40">
+            </div>
+            <div class="service-content-box">
+                <h4 class="h4 service-item-title">{{ service.title }}</h4>
+                <p class="service-item-text">{{ service.description }}</p>
+            </div>
+        </li>
+        }
+    </ul>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <h3 class="h3 testimonials-title">Testimonials</h3>
+    <ul class="testimonials-list has-scrollbar">
+        @for (testimonial of testimonials; track testimonial.name) {
+        <li class="testimonials-item">
+            <div class="content-card" (click)="openModal(testimonial)">
+                <figure class="testimonials-avatar-box">
+                    <img [src]="testimonial.img" [alt]="testimonial.name" width="60" style="border-radius: 20%;">
+                </figure>
+                <h4 class="h4 testimonials-item-title">{{ testimonial.name }}</h4>
+                <div class="testimonials-text">
+                    <p>{{ testimonial.text }}</p>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</section>
+
+<!-- Testimonials Modal -->
+<div class="modal-container" [class.active]="modalActive">
+    <app-testimonial-modal [isActive]="modalActive" [data]="modalData" (closeModal)="closeModal()">
+    </app-testimonial-modal>
+</div>

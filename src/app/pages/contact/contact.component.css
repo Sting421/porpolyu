@@ -1,0 +1,73 @@
+/* Contact page component styles - inherits from global styles */
+
+/* Form Messages */
+.form-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-message {
+    background: linear-gradient(to right, rgba(0, 255, 135, 0.1), rgba(0, 200, 100, 0.05));
+    border: 1px solid rgba(0, 255, 135, 0.2);
+    color: hsl(152, 100%, 50%);
+}
+
+.error-message {
+    background: linear-gradient(to right, rgba(255, 68, 68, 0.1), rgba(255, 0, 0, 0.05));
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    color: hsl(0, 100%, 65%);
+}
+
+.form-message ion-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.form-message span {
+    flex: 1;
+}
+
+/* Loading state for form inputs */
+.form-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Hourglass icon animation */
+.form-btn ion-icon[name="hourglass"] {
+    animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

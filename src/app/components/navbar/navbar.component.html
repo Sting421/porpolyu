@@ -1,0 +1,9 @@
+<ul class="navbar-list">
+    @for (item of navItems; track item) {
+    <li class="navbar-item">
+        <button class="navbar-link" [class.active]="activePage === item.toLowerCase()" (click)="onPageChange(item)">
+            {{ item }}
+        </button>
+    </li>
+    }
+</ul>

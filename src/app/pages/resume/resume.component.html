@@ -1,0 +1,81 @@
+<header>
+    <h2 class="h2 article-title">Resume</h2>
+</header>
+
+<!-- CV Actions -->
+<section class="cv-actions">
+    <div class="cv-buttons-wrapper">
+        <button class="cv-btn view-cv-btn" (click)="viewCV()">
+            <ion-icon name="eye-outline"></ion-icon>
+            <span>View CV</span>
+        </button>
+    </div>
+</section>
+
+<!-- Education -->
+<section class="timeline">
+    <div class="title-wrapper">
+        <div class="icon-box">
+            <ion-icon name="book-outline"></ion-icon>
+        </div>
+        <h3 class="h3">Education</h3>
+    </div>
+    <ol class="timeline-list">
+        @for (item of education; track item.title + item.description) {
+        <li class="timeline-item">
+            <h4 class="h4 timeline-item-title">
+                @if (item.url) {
+                <a [href]="item.url" target="_blank" class="school-link">{{ item.title }}</a>
+                } @else {
+                {{ item.title }}
+                }
+            </h4>
+            <p class="timeline-text">{{ item.description }}</p>
+            @if (item.period) {
+            <span>{{ item.period }}</span>
+            }
+        </li>
+        }
+    </ol>
+</section>
+
+<!-- Experience -->
+<section class="timeline">
+    <div class="title-wrapper">
+        <div class="icon-box">
+            <ion-icon name="book-outline"></ion-icon>
+        </div>
+        <h3 class="h3">Experience</h3>
+    </div>
+    <ol class="timeline-list">
+        @for (item of experience; track item.title) {
+        <li class="timeline-item">
+            <h4 class="h4 timeline-item-title">{{ item.title }}</h4>
+            <span>{{ item.period }}</span>
+            <p class="timeline-text">{{ item.description }}</p>
+        </li>
+        }
+    </ol>
+</section>
+
+<!-- Tech Stack -->
+<section>
+    <h2 class="h2 article-title">Tech Stack <small>(Frameworks & Libraries)</small></h2>
+    <div class="tech-stack-container"
+        style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-left: 80px; margin-right: 80px;">
+        @for (tech of techStack; track tech.icon) {
+        <i [class]="tech.icon" [style]="tech.style"></i>
+        }
+    </div>
+</section>
+<br><br>
+
+<!-- Graphics Software -->
+<section>
+    <h2 class="h2 article-title">Graphics & Editing Software</h2>
+    <div class="tech-stack-container" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        @for (software of graphicsSoftware; track software.icon) {
+        <i [class]="software.icon" [style]="software.style"></i>
+        }
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<!-- Iframe Viewer Modal -->
+@if (showViewer) {
+<div class="iframe-viewer-overlay" (click)="closeViewer()">
+    <div class="iframe-viewer-container" (click)="$event.stopPropagation()">
+        <!-- Header with close button -->
+        <div class="iframe-viewer-header">
+            <div class="iframe-viewer-url">
+                <ion-icon name="globe-outline"></ion-icon>
+                <span>{{ currentRawUrl }}</span>
+            </div>
+            <button class="iframe-close-btn" (click)="closeViewer()">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+        </div>
+
+        <!-- Iframe content -->
+        <div class="iframe-viewer-content">
+            <iframe [src]="currentUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="iframe-viewer-actions">
+            <button class="iframe-action-btn proceed-btn" (click)="closeViewer()">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <span>Close</span>
+            </button>
+            @if (isPdfFile()) {
+            <button class="iframe-action-btn download-btn" (click)="downloadFile()">
+                <ion-icon name="download-outline"></ion-icon>
+                <span>Download</span>
+            </button>
+            }
+            <button class="iframe-action-btn browser-btn" (click)="openInBrowser()">
+                <ion-icon name="open-outline"></ion-icon>
+                <span>Open in Browser</span>
+            </button>
+        </div>
+    </div>
+</div>
+}
